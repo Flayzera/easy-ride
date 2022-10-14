@@ -9,18 +9,12 @@
         <p>Oferecer carona:</p>
       </div>
       <div class="input-group-text">
-        <input type="text" placeholder="Saída (Bairro)" v-model="obj.saida">
-        <input type="text" placeholder="Destino (Bairro)" v-model="obj.whither">
-        <input type="number" placeholder="Vagas" v-model="obj.spaceAvailable">
+        <input type="text" placeholder="Saída (Bairro)" v-model="ride.origin">
+        <input type="text" placeholder="Destino (Bairro)" v-model="ride.destination">
+        <input type="number" placeholder="Vagas" v-model="ride.spots">
       </div>
       <div class="input-group-time">
-        <input class="input-number" type="number" v-model="obj.day">
-        <p class="separator">/</p>
-        <input class="input-number" type="number" v-model="obj.month">
-        <p class="separator">às</p>
-        <input class="input-number" type="number" v-model="obj.hour">
-        <p class="separator">:</p>
-        <input class="input-number" type="number" v-model="obj.minutes">
+        <input type="datetime-local" v-model="ride.departure">
       </div>
       <div class="btn">
       <button @click="registerRideAndNavigate()">Realizar Cadastro</button>
@@ -36,14 +30,14 @@ export default {
   name: 'OfferRideView',
   data () {
     return {
-      obj: {
-        saida: '',
-        whither: '',
-        spaceAvailable: '',
-        day: '',
-        month: '',
-        hour: '',
-        minutes: ''
+      ride: {
+        id: Math.random().toString(16).substr(-5),
+        origin: '',
+        destination: '',
+        spots: 0,
+        departure: null,
+        zone: this.$route.params.zoneId,
+        picked: false
       }
     }
   },
@@ -51,9 +45,10 @@ export default {
     ...mapMutations([
       'registerRide'
     ]),
-    registerRideAndNavigate (obj) {
-      this.registerRide(obj)
-      this.$router.push('/leste')
+
+    registerRideAndNavigate () {
+      this.registerRide(this.ride)
+      this.$router.back()
     }
   }
 }

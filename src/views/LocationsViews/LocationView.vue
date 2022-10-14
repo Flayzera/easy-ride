@@ -7,10 +7,7 @@
         <p>Escolha sua zona:</p>
       </div>
       <div class="btn-group">
-        <button @click="$router.push('/leste')">Leste</button>
-        <button>Sul</button>
-        <button>Norte</button>
-        <button>Sudeste</button>
+        <button v-for="zone in zones" :key="zone.id" @click="$router.push('/zone/' + zone.id)">{{zone.name}}</button>
       </div>
     </div>
   </div>
@@ -19,11 +16,17 @@
 
 <script>
 import SideBarView from '@/components/SideBarView.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: { SideBarView },
-  name: 'LocationView'
+  name: 'LocationView',
 
+  computed: {
+    ...mapGetters({
+      zones: 'getZones'
+    })
+  }
 }
 </script>
 
