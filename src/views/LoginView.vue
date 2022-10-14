@@ -11,7 +11,7 @@
         <span @click="showPassword = !showPassword">
           <i class="fa" :class="[showPassword ? 'fa-eye' : 'fa-eye-slash']" aria-hidden="true"></i>
         </span>
-        <button class="log-in">Entrar</button>
+        <button @click="$router.push('location')" class="log-in">Entrar</button>
         <a @click="$router.push('/register')">Realizar cadastro</a>
         <a href="javascript:void(0)">Esqueceu seu email?</a>
         <a href="javascript:void(0)">Esqueceu sua senha?</a>
@@ -51,7 +51,7 @@ export default {
 
 .login {
   background-color: #0378A6;
-  height: 100%;
+  height: 100vh;
   color: #FFFF;
   text-align: center;
   border-radius: 16px;
