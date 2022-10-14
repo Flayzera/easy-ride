@@ -111,6 +111,12 @@ label #cancel {
   visibility: hidden;
 }
 
+#check:checked ~ label #cancel {
+  margin-left: 245px;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 span {
   position: absolute;
   margin-left: 23px;

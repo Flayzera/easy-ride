@@ -2,9 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import LocationView from '../views/LocationsViews/LocationView.vue'
-import LesteView from '../views/LocationsViews/LesteView.vue'
+import ZoneView from '../views/LocationsViews/ZoneView.vue'
 import OfferRideView from '../views/OfferRideView.vue'
 import FinishRegistrationView from '../views/FinishRegistrationView.vue'
+import RideDetailsView from '../views/RideDetailsView.vue'
 
 const routes = [
   {
@@ -23,19 +24,24 @@ const routes = [
     component: LocationView
   },
   {
-    path: '/leste',
-    name: 'leste',
-    component: LesteView
+    path: '/zone/:id',
+    name: 'zone',
+    component: ZoneView
   },
   {
-    path: '/offer-ride',
-    name: 'offerRide',
+    path: '/create-ride/:zoneId',
+    name: 'createRide',
     component: OfferRideView
   },
   {
     path: '/finish-registration',
     name: 'finishRegistration',
     component: FinishRegistrationView
+  },
+  {
+    path: '/ride/:id',
+    name: 'rideDetails',
+    component: RideDetailsView
   }
 ]
 
