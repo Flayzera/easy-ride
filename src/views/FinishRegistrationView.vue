@@ -9,23 +9,46 @@
         <p>Completar cadastro:</p>
       </div>
       <div class="input-group">
-        <input type="text" placeholder="Veículo">
+        <input type="text" placeholder="Veículo" v-model="info.vehicle">
         <input type="number" placeholder="CNH">
-        <input type="number" placeholder="Placa">
+        <input type="text" placeholder="Placa" v-model="info.placa">
         <input type="number" placeholder="Pix">
         <div class="payment">
           <p>Realize pagamento</p>
           <img class="qrcode" src="@/assets/images/qrcode.png">
         </div>
-        <button>Virar Motorista</button>
+        <button @click="setPlacaAndVehicleAndNavigate()">Virar Motorista</button>
       </div>
     </div>
    </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
-  name: 'FinishRegistrationView'
+  name: 'FinishRegistrationView',
+
+  data () {
+    return {
+      info: {
+        placa: '',
+        vehicle: ''
+      }
+
+    }
+  },
+
+  methods: {
+    ...mapMutations([
+      'setPlacaAndVehicle'
+    ]),
+    setPlacaAndVehicleAndNavigate () {
+      this.setPlacaAndVehicle(this.info)
+      this.$router.back()
+      alert('Cadastro finalizado com sucesso!')
+    }
+  }
 }
 </script>
 

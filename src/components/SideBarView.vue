@@ -5,11 +5,14 @@
       <i class="fas fa-times" id="cancel"></i>
     </label>
     <div class="sidebar">
-      <header>Meu menu</header>
+      <div class="head">
+      <i class="fal fa-user-circle fa-4x"></i>
+      <p class="full-name">{{ getFullName }}</p>
+      </div>
       <a href="#">
         <span>Meus Dados</span>
       </a>
-      <a href="#">
+      <a @click="this.$router.push('/finish-registration')">
         <span>Virar Motorista</span>
       </a>
       <a href="#">
@@ -19,8 +22,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'SideBarView'
+  name: 'SideBarView',
+
+  computed: {
+    ...mapGetters([
+      'getFullName'
+    ])
+  }
+
 }
 </script>
 
@@ -30,6 +42,23 @@ export default {
   margin: 0;
   padding: 0;
   text-decoration: none;
+}
+
+.head {
+  display: flex;
+  margin-left: 16px;
+  margin-top: 16px;
+}
+
+.fa-user-circle {
+  color: white;
+}
+
+.full-name {
+  color: white;
+  margin-top: 16px;
+  margin-left: 16px;
+  font-size: 16pt;
 }
 
 .sidebar {

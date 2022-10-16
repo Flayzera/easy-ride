@@ -9,18 +9,19 @@
         <p>Cadastro:</p>
       </div>
       <div class="input-group">
-        <input type="text" placeholder="Nome Completo">
+        <input type="text" placeholder="Nome Completo" v-model="fullName">
         <input type="text" placeholder="Email">
         <input type="password" placeholder="Senha">
         <select class="input_sexo" name="Sexo">
           <option value="Genero">Genero</option>
           <option value="Masculino">Masculino</option>
           <option value="Feminino">Feminino</option>
+          <option value="Uknown">Prefiro não responder</option>
         </select>
         <input type="number" placeholder="CPF">
         <input type="text" placeholder="IES">
-        <input type="number" placeholder="Email">
-        <input type="file" placeholder="Email">
+        <input type="number" placeholder="Matrícula">
+        <input type="file">
         <button @click="showMessage" class="register">Realizar Cadastro</button>
       </div>
     </div>
@@ -28,13 +29,25 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'RegisterView',
 
+  data () {
+    return {
+      fullName: ''
+    }
+  },
+
   methods: {
+    ...mapMutations([
+      'setFullName'
+    ]),
+
     showMessage () {
       alert('Cadastro realizado com sucesso!')
+      this.setFullName(this.fullName)
       this.$router.push('/')
     }
   }

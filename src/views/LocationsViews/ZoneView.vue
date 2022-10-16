@@ -1,30 +1,26 @@
 <template>
   <div class="main">
+    <div>
+    <a @click="this.$router.back()">
+      <i class="far fa-chevron-left fa-2x arrow"></i>
+    </a>
+    </div>
     <div class="row">
       <a @click="$router.push('/create-ride/' + zone)">
       <i class="fal fa-plus-square fa-2x" style="color: #BF9765"></i>
       </a>
       <input type="text" placeholder="Busca">
-      <div v-for="ride in rides" :key="ride"></div>
-
-      <div class="rides">
-        <div v-for="ride in zoneRides" :key="ride.id" class="ride" @click="$router.push('/ride/' + ride.id)">
-          <div class="field-group">
-            <div class="label">Origem</div>
-            <div class="value">{{ride.origin}}</div>
-          </div>
-          <div class="field-group">
-            <div class="label">Destino</div>
-            <div class="value">{{ride.destination}}</div>
-          </div>
-          <div class="field-group">
-            <div class="label">Vagas</div>
-            <div class="value">{{ride.spots}}</div>
-          </div>
-          <div class="field-group">
-            <div class="label">Hora da partida</div>
-            <div class="value">{{ride.departure}}</div>
-          </div>
+    </div>
+    <div class="rides">
+      <div v-for="ride in zoneRides" :key="ride.id" class="ride" @click="$router.push('/ride/' + ride.id)">
+        <div class="field-group">
+          <div class="value">{{ride.origin}}</div>
+        </div>-
+        <div class="field-group">
+          <div class="value">{{ride.destination}}</div>
+        </div>
+        <div class="field-group">
+          <div class="value">{{ride.departure}}</div>
         </div>
       </div>
     </div>
@@ -54,6 +50,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.fa-chevron-left {
+  color: #0378A6;
+  padding: 20px 0 0 20px;
+}
+
 .main {
   height: 100vh;
 }
@@ -61,7 +62,6 @@ export default {
 .row{
   display: flex;
   justify-content: center;
-
 }
 
 input {
@@ -74,5 +74,24 @@ input {
 
 .fa-plus-square{
    margin: 30px 8px 0 8px;
+}
+
+.ride {
+  display: flex;
+  background-color: #0378A6;
+  color: white;
+  width: 180px;
+  height: 80px;
+  margin-top: 20px;
+  margin-left: 130px;
+  border-radius: 8px;
+  text-align: center;
+  align-items: center;
+}
+
+.field-group {
+  display: inline-block;
+  margin: 4px;
+
 }
 </style>

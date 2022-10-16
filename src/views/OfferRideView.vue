@@ -91,7 +91,6 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 25px;
 }
 
 input {
@@ -105,24 +104,13 @@ input {
   }
 }
 
-.input-number {
-   width: 13px;
-   height: 20px;
-    border-radius: 12px;
-    border: 1px solid #0378A6;
-    margin: 10px 8px 0 8px;
-    &:focus-visible {
-      outline: none;
-  }
-}
-
 .btn {
    display: flex;
   justify-content: center;
 }
 
 button {
-  width: 250px;
+  width: 280px;
   height: 50px;
   border-radius: 16px;
   border: solid 1px #0378A6;
@@ -131,6 +119,7 @@ button {
   font-family: 'Chathura', sans-serif;
   font-weight: 400;
   font-size: 15pt;
+  margin-top: 14px;
 }
 
 </style>

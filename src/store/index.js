@@ -20,7 +20,10 @@ export default createStore({
         id: 'west',
         name: 'Oeste'
       }
-    ]
+    ],
+    info: {},
+
+    fullName: ''
   },
   getters: {
     getRides: (state) => {
@@ -29,11 +32,25 @@ export default createStore({
 
     getZones: (state) => {
       return state.zones
+    },
+    getPlacaAndVehicle: (state) => {
+      return state.info
+    },
+    getFullName: (state) => {
+      return state.fullName
     }
   },
   mutations: {
     registerRide: (state, n) => {
       state.rides.push(n)
+      console.log(state.rides)
+    },
+    setPlacaAndVehicle: (state, n) => {
+      state.info = n
+      console.log(state.info)
+    },
+    setFullName: (state, n) => {
+      state.fullName = n
     }
   },
   actions: {
