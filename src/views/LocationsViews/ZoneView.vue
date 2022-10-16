@@ -20,7 +20,7 @@
           <div class="value">{{ride.destination}}</div>
         </div>
         <div class="field-group">
-          <div class="value">{{ride.departure}}</div>
+          <div class="value">{{dateFormated(ride)}}</div>
         </div>
       </div>
     </div>
@@ -29,9 +29,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import formatDateTime from '@/utils/formatters'
 
 export default {
   name: 'LesteView',
+
+  methods: {
+    dateFormated (ride) {
+      return formatDateTime(ride.departure)
+    }
+  },
 
   computed: {
     ...mapGetters({

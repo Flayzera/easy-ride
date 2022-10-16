@@ -1,5 +1,4 @@
 import { createStore } from 'vuex'
-import formatDateTime from '@/utils/formatters'
 
 export default createStore({
   state: {
@@ -43,7 +42,7 @@ export default createStore({
   },
   mutations: {
     registerRide: (state, n) => {
-      n.departure = formatDateTime(n.departure)
+      // n.departure = formatDateTime(n.departure)
       state.rides.push(n)
     },
     setPlacaAndVehicle: (state, n) => {

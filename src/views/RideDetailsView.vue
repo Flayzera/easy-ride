@@ -18,10 +18,10 @@
         Destino: {{ride.destination}}
       </div>
       <div class="flex-item">
-        Horário: {{}}h
+        Horário: {{getHour}}h
       </div>
       <div class="flex-item">
-        Data: {{}}
+        Data: {{getMonthAndDay}}
       </div>
       <div class="flex-item">
         Placa: {{getPlacaAndVehicle.placa}}
@@ -40,6 +40,7 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import { newFormatDateTime, newFormatTime } from '@/utils/formatters'
 
 export default {
   name: 'RideDetailsView',
@@ -52,6 +53,14 @@ export default {
     ),
     ride () {
       return this.$store.state.rides.find(i => i.id === this.$route.params.id)
+    },
+    getMonthAndDay () {
+      const date = newFormatDateTime(this.ride.departure)
+      return date
+    },
+    getHour () {
+      const hour = newFormatTime(this.ride.departure)
+      return hour
     }
   },
   methods: {
