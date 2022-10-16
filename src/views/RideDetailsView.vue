@@ -33,13 +33,13 @@
         <p class="text">Pix:</p>
         <img class="qrcode" src="@/assets/images/qrcode.png">
       </div>
-      <button class="btn">Finalizar carona</button>
+      <button class="btn" @click="finalizarCarona(ride)">Finalizar carona</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'RideDetailsView',
@@ -52,6 +52,15 @@ export default {
     ),
     ride () {
       return this.$store.state.rides.find(i => i.id === this.$route.params.id)
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'finishRide'
+    ]),
+    finalizarCarona (ride) {
+      this.finishRide(ride)
+      this.$router.back()
     }
   }
 }

@@ -51,6 +51,9 @@ export default createStore({
     },
     setFullName: (state, n) => {
       state.fullName = n
+    },
+    finishRide: (state, ride) => {
+      state.rides = state.rides.filter((item) => { return item.id !== ride.id })
     }
   },
   actions: {

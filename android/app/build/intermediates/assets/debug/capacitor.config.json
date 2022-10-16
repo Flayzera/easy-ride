@@ -1,0 +1,7 @@
+{
+	"appId": "org.vue.easyRide",
+	"appName": "easy-ride",
+	"bundledWebRuntime": false,
+	"webDir": "dist",
+	"npmClient": "yarn"
+}
